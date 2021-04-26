@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "MISA.Core/1.0.0": {
+        "dependencies": {
+          "MISA.Entity": "1.0.0"
+        },
+        "runtime": {
+          "MISA.Core.dll": {}
+        }
+      },
+      "MISA.Entity/1.0.0": {
+        "runtime": {
+          "MISA.Entity.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MISA.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MISA.Entity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
