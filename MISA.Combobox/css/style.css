@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+}
+.cb-autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.cb-main {
+  position: relative;
+  display: inline-block;
+  display: flex;
+}
+
+.inp_text {
+  width: 200px;
+  border: 1px solid #e5e5e5;
+  border-color: green;
+}
+
+.inp_text :focus {
+  background-color: aqua;
+}
+.btn_down {
+  width: 40px;
+  height: 40px;
+  background-image: url(../assets/chevron-down.png);
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  border: 1px solid #e5e5e5;
+  border-color: green;
+  border-left: none;
+  cursor: pointer;
+}
+
+.ul_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #e5e5e5;
+  width: 99%;
+}
+
+.hide {
+  display: none;
+}
+
+.ul_list li {
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.ul_list li:hover {
+  background-color: green;
+}
+.ul_list li.selected {
+  background-color: green;
+}
