@@ -73,7 +73,7 @@ namespace MISA.CukCuk.Api.Controllers
         }
 
         [HttpDelete("{entityId}")]
-        public IActionResult Delete(Guid entityId)
+        public virtual IActionResult Delete(Guid entityId)
         {
             try
             {

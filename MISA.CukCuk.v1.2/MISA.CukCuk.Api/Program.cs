@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Api
 {
+#pragma warning disable CS1591
     public class Program
     {
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -23,4 +25,5 @@ namespace MISA.CukCuk.Api
                     webBuilder.UseStartup<Startup>();
                 });
     }
+#pragma warning restore CS1591
 }

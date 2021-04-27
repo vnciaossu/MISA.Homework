@@ -315,3 +315,5 @@ D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\obj\Debug
 D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\obj\Debug\net5.0\ref\MISA.CukCuk.Api.dll
 D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\obj\Debug\net5.0\MISA.CukCuk.Api.pdb
 D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\obj\Debug\net5.0\MISA.CukCuk.Api.genruntimeconfig.cache
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\bin\Debug\net5.0\MISA.CukCuk.Api.xml
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.CukCuk.Api\obj\Debug\net5.0\MISA.CukCuk.Api.xml

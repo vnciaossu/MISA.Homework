@@ -4,6 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>80c0ba9b-a4e8-4ea6-8def-339e7c262261</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

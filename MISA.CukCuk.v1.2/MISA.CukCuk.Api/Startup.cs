@@ -18,8 +18,10 @@ using MISA.Infrastructure.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Api
@@ -40,6 +42,9 @@ namespace MISA.CukCuk.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MISA.CukCuk.Api", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
             //addScoped Service
             services.AddScoped<ICustomerService, CustomerService>();
@@ -63,7 +68,7 @@ namespace MISA.CukCuk.Api
             }
 
             // Hook in the global error-handling middleware
-            //app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+            //app.UseMiddleware(typeof(ErrorHandlingMiddleware));   
             app.UseMiddleware(typeof(ErrorHandling));
 
            //app.UseExceptionHandler(c => c.Run(async context =>

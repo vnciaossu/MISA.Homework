@@ -16,6 +16,16 @@ namespace MISA.CukCuk.Api.Controllers
             _customerGroupService = customerGroupService;
         }
 
-    
+        /// <summary>
+        /// Xóa Customer Group
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <returns></returns>
+        [HttpDelete("{entityId}")]
+        public override IActionResult Delete(Guid entityId)
+        {
+            return StatusCode(405);
+        }
+
     }
 }

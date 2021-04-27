@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MISA.CukCuk.Api</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:MISA.CukCuk.Api.Controllers.CustomerController.GetCustomers(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Guid})" -->
+        <member name="M:MISA.CukCuk.Api.Controllers.CustomerGroupController.Delete(System.Guid)">
+            <summary>
+            Xóa Customer Group
+            </summary>
+            <param name="entityId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
