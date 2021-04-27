@@ -65,5 +65,49 @@ namespace MISA.CukCuk.Api.Controllers
                 throw;
             }
         }
+
+        [HttpGet("{customerGroupId}")]
+        public IActionResult GetById(Guid customerGroupId)
+        {
+            try
+            {
+               var customerGroup = _customerGroupService.GetById(customerGroupId);
+                if(customerGroup != null)
+                {
+                    return Ok(customerGroup);
+                }
+                else
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPut("{customerGroupId}")]
+        public IActionResult Put([FromBody] CustomerGroup customerGroup)
+        {
+            try
+            {
+                var res  = _customerGroupService.Update(customerGroup);
+                if (res > 0)
+                {
+                    return Ok("Update thành công");
+                }
+                else
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -35,8 +35,8 @@ namespace MISA.Infrastructure.Repository
         {
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var tableName = typeof(MISAEntity).Name;
-                var sqlCommand = $"Proc_Get{tableName}s";
+                var tagname = typeof(MISAEntity).Name;
+                var sqlCommand = $"Proc_Get{tagname}s";
                 var customerGroups = dbConnection.Query<MISAEntity>(sqlCommand, commandType: CommandType.StoredProcedure);
                 return customerGroups;
             }
@@ -46,10 +46,10 @@ namespace MISA.Infrastructure.Repository
         {
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var tableName = typeof(MISAEntity).Name;
-                var sqlCommand = $"Proc_Get{tableName}ById";
+                var tagname = typeof(MISAEntity).Name;
+                var sqlCommand = $"Proc_Get{tagname}ById";
                 DynamicParameters dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add("@CustomerId", entityId);
+                dynamicParameters.Add($"@{tagname}Id", entityId);
                 var customer = dbConnection.QueryFirstOrDefault<MISAEntity>(sqlCommand, param: dynamicParameters, commandType: CommandType.StoredProcedure);
                 return customer;
             }
@@ -59,8 +59,8 @@ namespace MISA.Infrastructure.Repository
         {
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var tableName = typeof(MISAEntity).Name;
-                var sqlCommand = $"Proc_Insert{tableName}";
+                var tagname = typeof(MISAEntity).Name;
+                var sqlCommand = $"Proc_Insert{tagname}";
                 var rowsAffect = dbConnection.Execute(sqlCommand, param: entity, commandType: CommandType.StoredProcedure);
                 return rowsAffect;
             }
@@ -70,9 +70,9 @@ namespace MISA.Infrastructure.Repository
         {
             using (dbConnection = new MySqlConnection(connectionString))
             {
-                var tableName = typeof(MISAEntity).Name;
-                var sqlCommand = $"Proc_Update{tableName}";
-                var rowAffects = dbConnection.Execute(sqlCommand, param: entityId, commandType: System.Data.CommandType.StoredProcedure);
+                var tagname = typeof(MISAEntity).Name;
+                var sqlCommand = $"Proc_Update{tagname}";
+                var rowAffects = dbConnection.Execute(sqlCommand, param: entityId, commandType: CommandType.StoredProcedure);
                 return rowAffects;
             }
         }
