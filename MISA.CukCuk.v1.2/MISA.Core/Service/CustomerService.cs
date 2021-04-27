@@ -23,10 +23,15 @@ namespace MISA.Core.Service
                 var customer = entity as Customer;
                 CustomerException.CheckCustomerCodeEmpty(customer.CustomerCode);
 
-                var isExits = _customerRepository.CheckCustomerExists(customer.CustomerCode);
+                var isExits = _customerRepository.CheckCustomerExists(customer.CustomerCode);              
                 if (isExits == true)
                 {
                     throw new CustomerException("Mã khác hàng đã tồn tại trên hệ thống");
+                }
+                var isPhoneExits = _customerRepository.CheckPhoneNumberExists(customer.PhoneNumber);
+                if(isPhoneExits == true)
+                {
+                    throw new CustomerException("Số điện thoại đã tồn tại trên hệ thống");
                 }
             }
         }
