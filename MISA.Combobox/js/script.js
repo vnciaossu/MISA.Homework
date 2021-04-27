@@ -87,18 +87,31 @@ function buttonEvent(e){
       $("#ul_list").find("li").eq(index).removeClass("hover");
       let _this = $("#ul_list").find("li").eq(index + 1).addClass("hover");
       index += 1;
-      clickGender(_this);
+      clickGender(_this);      
+    }else{
+      index = -1;
+      $("#ul_list").find("li").eq(index).removeClass("hover");
+      let _this = $("#ul_list").find("li").eq(index + 1).addClass("hover");
+      index += 1;
+      clickGender(_this);  
     }
   }else if(keyCode == 38){
-    if(index > 0){
+    if(index > 0 ){
       $("#ul_list").find("li").eq(index).removeClass("hover");
       let _this = $("#ul_list").find("li").eq(index-1).addClass("hover");
       index--;
       clickGender(_this);
+    }else{
+      index = count;
+      $("#ul_list").find("li").eq(0).removeClass("hover");
+      let _this = $("#ul_list").find("li").eq(index-1).addClass("hover");
+      index--;
+      clickGender(_this); 
     }
   }else if(keyCode == 13){
     let _this = $("#ul_list").find("li.hover");
     clickGender(_this);
+    $("#ul_list").html("");
   }
 
 }

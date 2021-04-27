@@ -44,7 +44,7 @@ namespace MISA.CukCuk.Api
             //addScoped Service
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerGroupService, CustomerGroupService>();
-            //services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             //addScoped Repository
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerGroupRepository, CustomerGroupRepository>();
