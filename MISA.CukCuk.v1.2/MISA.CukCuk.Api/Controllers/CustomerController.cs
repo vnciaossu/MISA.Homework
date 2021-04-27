@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MISA.Core.Entity;
+using MISA.Core.Interfaces.Services;
 using System;
 using System.Linq;
-using System.Data;
-using MySqlConnector;
-using Dapper;
-using MISA.Entity.Models;
-using MISA.Core.Interfaces.Repository;
-using MISA.Core.Interfaces.Services;
 
 namespace MISA.CukCuk.Api.Controllers
 {
@@ -15,15 +10,13 @@ namespace MISA.CukCuk.Api.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        ICustomerService _customerService;
-        ICustomerRepository _customerRepository; 
+        private ICustomerService _customerService;
 
-          
-        public CustomerController(ICustomerService customerService, ICustomerRepository customerRepository)
+        public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
-            _customerRepository = customerRepository;
         }
+
         /// <summary>
         /// Lấy dữ liệu toàn bộ khách hàng
         /// </summary>
@@ -36,7 +29,7 @@ namespace MISA.CukCuk.Api.Controllers
         public IActionResult Get()
         {
             var customers = _customerService.GetAll();
-            if(customers.Count() > 0)
+            if (customers.Count() > 0)
             {
                 return Ok(customers);
             }
@@ -61,18 +54,19 @@ namespace MISA.CukCuk.Api.Controllers
         public IActionResult Post(Customer customer)
         {
             var res = _customerService.Insert(customer);
-            if(res > 0)
+            if (res > 0)
             {
-                return StatusCode(201,res);
+                return StatusCode(201, res);
             }
             else
             {
                 return NoContent();
             }
         }
+
         /// <summary>
         /// GET : api/v1/Customer/id
-        /// Lấy khách hàng theo id 
+        /// Lấy khách hàng theo id
         /// Created By : TMQuy
         /// </summary>
         /// <param name="id">Id khách hàng</param>
@@ -80,8 +74,8 @@ namespace MISA.CukCuk.Api.Controllers
         [HttpGet("{customerId}")]
         public IActionResult GetCustomerById(Guid customerId)
         {
-            var customer = _customerService.GetCustomerById(customerId);
-            //4. Kiểm tra dữ liệu : 
+            var customer = _customerService.GetById(customerId);
+            //4. Kiểm tra dữ liệu :
             //- Nếu có dữ liệu trả về 200 kèm theo dữ liệu
             //- Nếu không có dữ liệu trả về 204
             if (customer != null)
@@ -96,7 +90,7 @@ namespace MISA.CukCuk.Api.Controllers
 
         /// <summary>
         /// PUT : api/v1/Customers/id
-        /// Sửa thông tin khách hàng 
+        /// Sửa thông tin khách hàng
         /// Created By : TMQuy
         /// </summary>
         /// <param name="id">id khách hàng</param>
@@ -106,23 +100,23 @@ namespace MISA.CukCuk.Api.Controllers
         public IActionResult Put([FromBody] Customer customer)
         {
             var rowAffects = _customerService.Update(customer);
-            
+
             // số bản ghi được sửa đổi
-            if(rowAffects > 0)
+            if (rowAffects > 0)
             {
                 return Ok("Sửa thành công");
             }
             return NoContent();
-
         }
+
         /// <summary>
         /// DELETE : api/v1/Customers/id
-        /// Xóa thông tin khách hàng 
+        /// Xóa thông tin khách hàng
         /// </summary>
         /// <param name="id">Id khách hàng</param>
         /// <returns>
         /// 200 - Xóa thành công
-        /// 204 - Không xóa được dữ liệu khỏi DB 
+        /// 204 - Không xóa được dữ liệu khỏi DB
         /// </returns>
         [HttpDelete("{customerId}")]
         public IActionResult Delete(Guid customerId)
@@ -161,6 +155,7 @@ namespace MISA.CukCuk.Api.Controllers
                 return NoContent();
             }
         }
+
         /// <summary>
         /// Lấy danh sách khách hàng theo từng điều kiện lọc
         /// </summary>
@@ -177,7 +172,7 @@ namespace MISA.CukCuk.Api.Controllers
         public IActionResult GetCustomers([FromQuery] int page = 1, [FromQuery] int pageSize = 10, [FromQuery] string fullName = "", [FromQuery] string phoneNumber = "", [FromQuery] Guid? customerGroupId = null)
         {
             var paging = _customerService.GetCustomers(page, pageSize, fullName, phoneNumber, customerGroupId);
-            
+
             // Xử lý kết quả trả về cho client.
             if (paging.data.Any())
             {
@@ -186,6 +181,5 @@ namespace MISA.CukCuk.Api.Controllers
 
             return NoContent();
         }
-
     }
 }

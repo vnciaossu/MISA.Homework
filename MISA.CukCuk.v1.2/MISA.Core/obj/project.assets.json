@@ -1,45 +1,26 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
-      "MISA.Entity/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/MISA.Entity.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MISA.Entity.dll": {}
-        }
-      }
-    }
+    "net5.0": {}
   },
-  "libraries": {
-    "MISA.Entity/1.0.0": {
-      "type": "project",
-      "path": "../MISA.Entity/MISA.Entity.csproj",
-      "msbuildProject": "../MISA.Entity/MISA.Entity.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "MISA.Entity >= 1.0.0"
-    ]
+    "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\tumin\\.nuget\\packages\\": {}
+    "C:\\Users\\tmquy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Web\\Misa\\MISACukCuk\\MISA.Core\\MISA.Core.csproj",
+      "projectUniqueName": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.CukCuk.v1.2\\MISA.Core\\MISA.Core.csproj",
       "projectName": "MISA.Core",
-      "projectPath": "D:\\Web\\Misa\\MISACukCuk\\MISA.Core\\MISA.Core.csproj",
-      "packagesPath": "C:\\Users\\tumin\\.nuget\\packages\\",
-      "outputPath": "D:\\Web\\Misa\\MISACukCuk\\MISA.Core\\obj\\",
+      "projectPath": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.CukCuk.v1.2\\MISA.Core\\MISA.Core.csproj",
+      "packagesPath": "C:\\Users\\tmquy\\.nuget\\packages\\",
+      "outputPath": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.CukCuk.v1.2\\MISA.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tumin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tmquy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -52,11 +33,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "D:\\Web\\Misa\\MISACukCuk\\MISA.Entity\\MISA.Entity.csproj": {
-              "projectPath": "D:\\Web\\Misa\\MISACukCuk\\MISA.Entity\\MISA.Entity.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -83,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

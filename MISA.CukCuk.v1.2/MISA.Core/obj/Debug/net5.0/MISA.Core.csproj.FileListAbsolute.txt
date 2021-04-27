@@ -58,3 +58,15 @@ D:\Web\Misa\MISACukCuk\MISA.Core\obj\Debug\net5.0\MISA.Core.csproj.CopyComplete
 D:\Web\Misa\MISACukCuk\MISA.Core\obj\Debug\net5.0\MISA.Core.dll
 D:\Web\Misa\MISACukCuk\MISA.Core\obj\Debug\net5.0\ref\MISA.Core.dll
 D:\Web\Misa\MISACukCuk\MISA.Core\obj\Debug\net5.0\MISA.Core.pdb
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.csprojAssemblyReference.cache
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.AssemblyInfoInputs.cache
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.AssemblyInfo.cs
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.csproj.CoreCompileInputs.cache
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.dll
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\ref\MISA.Core.dll
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.pdb
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\bin\Debug\net5.0\MISA.Core.deps.json
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\bin\Debug\net5.0\MISA.Core.dll
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\bin\Debug\net5.0\ref\MISA.Core.dll
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\bin\Debug\net5.0\MISA.Core.pdb
