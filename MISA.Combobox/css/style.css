@@ -15,11 +15,12 @@ body {
 .inp_text {
   width: 200px;
   border: 1px solid #e5e5e5;
-  border-color: green;
+  outline: none;
 }
 
-.inp_text :focus {
-  background-color: aqua;
+.inp_text:focus,
+.btn_down:focus{
+  border-color: green;
 }
 .btn_down {
   width: 40px;
@@ -29,7 +30,6 @@ body {
   background-size: 20px;
   background-repeat: no-repeat;
   border: 1px solid #e5e5e5;
-  border-color: green;
   border-left: none;
   cursor: pointer;
 }

@@ -18,6 +18,10 @@ function addEvent() {
     }
   });
 
+  $("#inp_text").on("hover", function () {
+    showGender(genderList);
+  });
+
   $(document).on("click", "#ul_list li", function () {
     var e = $(this);
     clickGender(e);
@@ -34,6 +38,10 @@ function addEvent() {
     );
     showGender(dataList, val);
   });
+
+  $(".cb-autocomplete").on("keydown",function(e){
+    buttonEvent(e);
+  })
 }
 
 function showGender(dataList, text) {
@@ -66,4 +74,30 @@ function clickGender(e) {
   $(e).addClass("selected");
   var genderCheck = $(e).data("gender");
   $("#inp_text").val(genderCheck.text);
+}
+
+
+function buttonEvent(e){
+  let index = -1;
+  let keyCode = e.keyCode;
+  let count = $("#ul_list").find("li").length;
+  
+  if(keyCode == 40){
+    if(index < count - 1){
+      $("#ul_list").find("li").eq(index).removeClass("hover");
+      $("#ul_list").find("li").eq(index+1).addClass("hover");
+      index++;
+    }
+  }else if(keyCode == 38){
+    if(index > 0){
+      $("#ul_list").find("li").eq(index).removeClass("hover");
+      $("#ul_list").find("li").eq(index-1).addClass("hover");
+      index--;
+    }
+  }
+  else if(keyCode == 13){
+    let _this = $("#ul_list").find("li.hover");
+    clickGender(_this);
+  }
+
 }
