@@ -59,3 +59,7 @@ body {
 .ul_list li.selected {
   background-color: green;
 }
+
+.ul_list li.hover {
+  background-color: green;
+}

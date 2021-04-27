@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   addEvent();
 });
 
@@ -76,26 +77,26 @@ function clickGender(e) {
   $("#inp_text").val(genderCheck.text);
 }
 
-
+var index = -1;
 function buttonEvent(e){
-  let index = -1;
   let keyCode = e.keyCode;
   let count = $("#ul_list").find("li").length;
   
   if(keyCode == 40){
     if(index < count - 1){
       $("#ul_list").find("li").eq(index).removeClass("hover");
-      $("#ul_list").find("li").eq(index+1).addClass("hover");
-      index++;
+      let _this = $("#ul_list").find("li").eq(index + 1).addClass("hover");
+      index += 1;
+      clickGender(_this);
     }
   }else if(keyCode == 38){
     if(index > 0){
       $("#ul_list").find("li").eq(index).removeClass("hover");
-      $("#ul_list").find("li").eq(index-1).addClass("hover");
+      let _this = $("#ul_list").find("li").eq(index-1).addClass("hover");
       index--;
+      clickGender(_this);
     }
-  }
-  else if(keyCode == 13){
+  }else if(keyCode == 13){
     let _this = $("#ul_list").find("li.hover");
     clickGender(_this);
   }
