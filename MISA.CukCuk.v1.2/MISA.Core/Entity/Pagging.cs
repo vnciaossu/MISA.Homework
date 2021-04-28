@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MISA.Core.Entity
 {
@@ -10,8 +6,8 @@ namespace MISA.Core.Entity
     /// Thông tin phân trang
     /// Created By : TMQuy
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class Pagging<T>
+    /// <typeparam name="MISAEntity"></typeparam>
+    public class Pagging<MISAEntity> where MISAEntity : class
     {
         /// <summary>
         /// Tổng số khách hàng
@@ -29,7 +25,7 @@ namespace MISA.Core.Entity
         /// Dữ liệu phân trang
         /// Created By : TMQuy
         /// </summary>
-        public IEnumerable<T> data { get; set; }
+        public IEnumerable<MISAEntity> data { get; set; }
 
         /// <summary>
         /// Trang hiện tại

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using MISA.Core.Interfaces.Repository;
 using MySqlConnector;
 using System;
@@ -7,14 +8,24 @@ using System.Data;
 
 namespace MISA.Infrastructure.Repository
 {
-    public class BaseRepository<MISAEntity> : IBaseRepository<MISAEntity> where MISAEntity: class
+    public class BaseRepository<MISAEntity> : IBaseRepository<MISAEntity> where MISAEntity : class
     {
-        protected string connectionString = "" +
-            "Host = 47.241.69.179;" +
-            "Port = 3306;" +
-            "Database = MF0_NVManh_CukCuk02;" +
-            "UID = dev;" +
-            "Password = 12345678;";
+        private IConfiguration _configuration;
+        protected string connectionString;
+
+        public BaseRepository(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = configuration.GetConnectionString("connectionDB");
+        }
+
+        //protected string connectionString = "" +
+        //    "Host = 47.241.69.179;" +
+        //    "Port = 3306;" +
+        //    "Database = MF0_NVManh_CukCuk02;" +
+        //    "UID = dev;" +
+        //    "Password = 12345678;"+
+        //    "Convert Zero Datetime=True;";
 
         protected IDbConnection dbConnection;
 

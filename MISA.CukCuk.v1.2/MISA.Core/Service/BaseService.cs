@@ -2,15 +2,13 @@
 using MISA.Core.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MISA.Core.Service
 {
-    public class BaseService<MISAEntity> : IBaseService<MISAEntity> where MISAEntity: class
+    public class BaseService<MISAEntity> : IBaseService<MISAEntity> where MISAEntity : class
     {
-        IBaseRepository<MISAEntity> _baseRepository;
+        private IBaseRepository<MISAEntity> _baseRepository;
+
         public BaseService(IBaseRepository<MISAEntity> baseRepository)
         {
             _baseRepository = baseRepository;
@@ -40,7 +38,6 @@ namespace MISA.Core.Service
 
         protected virtual void Validate(MISAEntity entity)
         {
-            
         }
 
         public int Update(MISAEntity entityId)

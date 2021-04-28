@@ -3,8 +3,6 @@ using Microsoft.Extensions.Configuration;
 using MISA.Core.Entity;
 using MISA.Core.Interfaces.Repository;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -12,7 +10,10 @@ namespace MISA.Infrastructure.Repository
 {
     public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
-       
+        public CustomerRepository(IConfiguration configuration) : base(configuration)
+        {
+        }
+
         public bool CheckCustomerExists(string customerCode)
         {
             IDbConnection dbConnection = new MySqlConnection(connectionString);
@@ -22,7 +23,6 @@ namespace MISA.Infrastructure.Repository
             var res = dbConnection.QueryFirstOrDefault<bool>("Proc_CheckCustomerCodeExists", param: dynamicParameters, commandType: CommandType.StoredProcedure);
             return res;
         }
-
 
         public bool CheckPhoneNumberExists(string phoneNumber)
         {
@@ -34,19 +34,42 @@ namespace MISA.Infrastructure.Repository
                 var res = dbConnection.QueryFirstOrDefault<bool>(sqlCommand, param: dynamicParameters, commandType: CommandType.StoredProcedure);
                 return res;
             }
-           
         }
 
-        public Pagging<Customer> GetCustomers(int pageIndex, int pageSize, string fullName, string phoneNumber, Guid? customerGroupId)
+        public Pagging<Customer> GetCustomers(CustomerFilter filter)
         {
-            throw new NotImplementedException();
-        }
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                Pagging<Customer> pageNew = new Pagging<Customer>();
 
-        public IEnumerable<Customer> Pagging(int pageIndex, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
+                var sqlCommand = "Proc_PaggingCustomers";
+                var customers = dbConnection.Query<Customer>(sqlCommand, param: filter, commandType: CommandType.StoredProcedure);
 
-       
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@filter", filter.filter);
+                dynamicParameters.Add("@customerGroupId", filter.CustomerGroupId);
+
+                //var totalRecord = dbConnection.QueryFirstOrDefault<int>("Proc_GetTotalCustomers", param: dynamicParameters, commandType: CommandType.StoredProcedure);
+                var totalPages = 1;
+                if (customers.Count() % 10 == 0)
+                {
+                    totalPages = customers.Count() / 10;
+                }
+                else
+                {
+                    totalPages = (customers.Count() / 10) + 1;
+                }
+                pageNew = new Pagging<Customer>
+                {
+                    totalRecord = customers.Count(),
+                    totalPages = totalPages,
+                    pageIndex = filter.Page,
+                    data = customers,
+                    pageSize = filter.PageSize
+                };
+                pageNew.data = customers;
+                return pageNew;
+            }
+        }
     }
 }

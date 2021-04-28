@@ -2,8 +2,6 @@
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces.Repository;
 using MISA.Core.Interfaces.Services;
-using System;
-using System.Collections.Generic;
 
 namespace MISA.Core.Service
 {
@@ -23,27 +21,22 @@ namespace MISA.Core.Service
                 var customer = entity as Customer;
                 CustomerException.CheckCustomerCodeEmpty(customer.CustomerCode);
 
-                var isExits = _customerRepository.CheckCustomerExists(customer.CustomerCode);              
+                var isExits = _customerRepository.CheckCustomerExists(customer.CustomerCode);
                 if (isExits == true)
                 {
                     throw new CustomerException("Mã khác hàng đã tồn tại trên hệ thống");
                 }
                 var isPhoneExits = _customerRepository.CheckPhoneNumberExists(customer.PhoneNumber);
-                if(isPhoneExits == true)
+                if (isPhoneExits == true)
                 {
                     throw new CustomerException("Số điện thoại đã tồn tại trên hệ thống");
                 }
             }
         }
 
-        public Pagging<Customer> GetCustomers(int pageIndex, int pageSize, string fullName, string phoneNumber, Guid? customerGroupId)
+        public Pagging<Customer> GetCustomers(CustomerFilter filter)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Customer> Pagging(int pageIndex, int pageSize)
-        {
-            throw new NotImplementedException();
+            return _customerRepository.GetCustomers(filter);
         }
     }
 }

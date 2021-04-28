@@ -80,7 +80,7 @@ namespace MISA.CukCuk.Api.Controllers
                 var res = _baseService.Delete(entityId);
                 if (res > 0)
                 {
-                    return Ok("Xóa thành công");
+                    return Ok(res);
                 }
                 else
                 {
