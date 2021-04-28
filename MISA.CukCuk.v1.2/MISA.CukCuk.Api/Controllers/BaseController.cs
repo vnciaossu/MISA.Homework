@@ -101,7 +101,7 @@ namespace MISA.CukCuk.Api.Controllers
                 var res = _baseService.Update(entity);
                 if (res > 0)
                 {
-                    return Ok("Update thành công");
+                    return Ok(res);
                 }
                 else
                 {

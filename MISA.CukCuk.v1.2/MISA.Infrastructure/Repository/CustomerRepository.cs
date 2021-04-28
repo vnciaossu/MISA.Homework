@@ -16,12 +16,13 @@ namespace MISA.Infrastructure.Repository
 
         public bool CheckCustomerExists(string customerCode)
         {
-            IDbConnection dbConnection = new MySqlConnection(connectionString);
-
-            DynamicParameters dynamicParameters = new DynamicParameters();
-            dynamicParameters.Add("@m_CustomerCode", customerCode);
-            var res = dbConnection.QueryFirstOrDefault<bool>("Proc_CheckCustomerCodeExists", param: dynamicParameters, commandType: CommandType.StoredProcedure);
-            return res;
+            using (dbConnection = new MySqlConnection(connectionString))
+            {
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@m_CustomerCode", customerCode);
+                var res = dbConnection.QueryFirstOrDefault<bool>("Proc_CheckCustomerCodeExists", param: dynamicParameters, commandType: CommandType.StoredProcedure);
+                return res;
+            }
         }
 
         public bool CheckPhoneNumberExists(string phoneNumber)

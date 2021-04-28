@@ -38,10 +38,16 @@ namespace MISA.CukCuk.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opts => opts.AddPolicy("MyPolicy", policy => policy
+                            .AllowCredentials()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MISA.CukCuk.Api", Version = "v1" });
+
+                //
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -67,6 +73,7 @@ namespace MISA.CukCuk.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MISA.CukCuk.Api v1"));
             }
 
+            app.UseCors("MyPolicy");
             // Hook in the global error-handling middleware
             //app.UseMiddleware(typeof(ErrorHandlingMiddleware));   
             app.UseMiddleware(typeof(ErrorHandling));
