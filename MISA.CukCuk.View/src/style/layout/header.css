@@ -1,0 +1,70 @@
+#header {
+  display: flex;
+  position: absolute;
+  left: 200px;
+  right: 0px;
+  height: 60px;
+  top: 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.slide {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin-left: 10px;
+  position: absolute;
+  left: 20px;
+}
+
+.slide .restaurantName {
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.user-info .user-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 100%;
+  background-image: url("../../assets/icon/avatar-default.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.user-info .user-name {
+  text-align: center;
+  font-family: GoogleSans-Italic;
+}
+
+.user-info .user-more {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 100%;
+  background-image: url("../../assets/icon/option.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+@font-face {
+  font-family: "GoogleSans-Bold";
+  src: url("../../assets/font/GoogleSans-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GoogleSans-Italic";
+  src: url("../../assets/font/GoogleSans-Italic.otf") format("opentype");
+}

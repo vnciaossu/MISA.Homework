@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using System;
 
 namespace MISA.Core.Entity
 {
@@ -18,12 +19,15 @@ namespace MISA.Core.Entity
         /// Mã khách hàng
         /// Created By : TMQuy
         /// </summary>
+        [MISARequired(name: "Mã khách hàng")]
+        [MISAMaxLength(20, msg: "Mã khách hàng không dài quá 20 kí tự")]
         public string CustomerCode { get; set; }
 
         /// <summary>
         /// Họ và tên
         /// Created By : TMQuy
         /// </summary>
+        [MISARequired]
         public string FullName { get; set; }
 
         /// <summary>
@@ -39,6 +43,26 @@ namespace MISA.Core.Entity
         public int? Gender { get; set; }
 
         /// <summary>
+        /// Tên giới tính
+        /// </summary>
+        public string GenderName
+        {
+            get
+            {
+                if (Gender == 1)
+                {
+                    return "Nam";
+                }
+                else if (Gender == 2)
+                {
+                    return "Nữ";
+                }
+
+                return "Không có";
+            }
+        }
+
+        /// <summary>
         /// Mã thẻ thành viên
         /// Created By : TMQuy
         /// </summary>
@@ -49,6 +73,30 @@ namespace MISA.Core.Entity
         /// Created By : TMQuy
         /// </summary>
         public Guid? CustomerGroupId { get; set; }
+
+        public string CustomerGroupName
+        {
+            get
+            {
+                if (CustomerGroupId == Guid.Parse("19165ed7-212e-21c4-0428-030d4265475f"))
+                {
+                    return "Khách hàng MISA";
+                }
+                else if (CustomerGroupId == Guid.Parse("2924c34d-68f1-1d0a-c9c7-6c0aeb6ec302"))
+                {
+                    return "Khách vãng lai";
+                }
+                else if (CustomerGroupId == Guid.Parse("3631011e-4559-4ad8-b0ad-cb989f2177da"))
+                {
+                    return "Khách thường";
+                }
+                else if (CustomerGroupId == Guid.Parse("7a0b757e-41eb-4df6-c6f8-494a84b910f4"))
+                {
+                    return "Khách VIP";
+                }
+                return "Không có";
+            }
+        }
 
         /// <summary>
         /// Số điện thoại

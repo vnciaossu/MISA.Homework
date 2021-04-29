@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using System;
 
 namespace MISA.Core.Entity
 {
@@ -18,6 +19,7 @@ namespace MISA.Core.Entity
         /// Tên nhóm khách hàng
         /// Created By : TMQuy
         /// </summary>
+        [MISARequired("Tên nhóm khách hàng không được phép để trống")]
         public string CustomerGroupName { get; set; }
 
         /// <summary>

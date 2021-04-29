@@ -2,6 +2,7 @@
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces.Repository;
 using MISA.Core.Interfaces.Services;
+using System;
 
 namespace MISA.Core.Service
 {
@@ -14,17 +15,18 @@ namespace MISA.Core.Service
             _customerRepository = customerRepository;
         }
 
-        protected override void Validate(Customer entity)
+        protected override void CustomValidate(Customer entity)
         {
             if (entity is Customer)
             {
+                //Xác định xem property nào sẽ thực hiện validate check bắt buộc nhập
+
                 var customer = entity as Customer;
-                CustomerException.CheckCustomerCodeEmpty(customer.CustomerCode);
 
                 var isExits = _customerRepository.CheckCustomerExists(customer.CustomerCode);
                 if (isExits == true)
                 {
-                    throw new CustomerException("Mã khác hàng đã tồn tại trên hệ thống");
+                    throw new Exception("Mã khác hàng đã tồn tại trên hệ thống");
                 }
                 var isPhoneExits = _customerRepository.CheckPhoneNumberExists(customer.PhoneNumber);
                 if (isPhoneExits == true)

@@ -82,3 +82,5 @@ D:\Web\Misa\Homework\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\M
 D:\Web\Misa\Homework\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.dll
 D:\Web\Misa\Homework\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\ref\MISA.Core.dll
 D:\Web\Misa\Homework\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.pdb
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.Properties.Resources.resources
+D:\Git\MISA.WEB2021_04A\MISA.Homework\MISA.CukCuk.v1.2\MISA.Core\obj\Debug\net5.0\MISA.Core.csproj.GenerateResource.cache

@@ -24,10 +24,10 @@ namespace MISA.CukCuk.Api.Controllers
         /// HTTPStatusCode - 204 : không có dữ liệu
         /// <returns>Danh sách khách hàng theo điều kiện lọc</returns>
         [HttpGet("Filter")]
-        public IActionResult GetCustomers([FromQuery] CustomerFilter filter)
+        public IActionResult GetCustomers([FromQuery] CustomerFilter customerFilter)
 
         {
-            var paging = _customerService.GetCustomers(filter);
+            var paging = _customerService.GetCustomers(customerFilter);
 
             // Xử lý kết quả trả về cho client.
             if (paging.data.Any())
