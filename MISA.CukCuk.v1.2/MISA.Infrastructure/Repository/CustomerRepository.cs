@@ -76,5 +76,6 @@ namespace MISA.Infrastructure.Repository
                 return pageNew;
             }
         }
+
     }
 }
