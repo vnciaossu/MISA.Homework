@@ -15,6 +15,7 @@ namespace MISA.Import.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+        static List<Customer> customers = new List<Customer>();
         private IDbConnection dbConnection;
 
         private string connectionString = ""
@@ -25,7 +26,7 @@ namespace MISA.Import.Controllers
                 + "Database = MF810-Import-TMQuy;"
                 + "convert zero datetime=True";
 
-        [HttpPost]
+        [HttpPost("Import")]
         public IActionResult Import(IFormFile formFile)
         {
             if (formFile == null || formFile.Length < 0)
@@ -37,8 +38,19 @@ namespace MISA.Import.Controllers
             {
                 return BadRequest();
             }
-            var customers = GetAllCustomer(formFile);
+            GetAllCustomer(formFile);
             Validate(customers);
+            var result = new
+            {
+                TotalRecord = customers.Count,
+                Data = customers
+            };
+            return Ok(result);
+        }
+
+        [HttpPost("Insert")]
+        public IActionResult Post()
+        {           
             var res = InsertCustomer(customers);
             var result = new
             {
@@ -46,14 +58,12 @@ namespace MISA.Import.Controllers
                 Success = res,
                 Data = customers
             };
-            return Ok(result);
+            return Ok(result);           
         }
-
         private List<Customer> GetAllCustomer(IFormFile formFile)
         {
             ExcelPackage.LicenseContext = LicenseContext.Commercial;
-            var customers = new List<Customer>();
-
+            
             using (var stream = new MemoryStream())
             {
                 formFile.CopyToAsync(stream);
