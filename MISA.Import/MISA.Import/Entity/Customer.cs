@@ -22,7 +22,7 @@ namespace MISA.Import.Entity
             Status = status;
         }
 
-        public Guid CustomerId { get; set; }
+        private Guid CustomerId { get; set; }
         public string FullName { get; set; }
         public string CustomerCode { get; set; }
         public string MemberCardCode { get; set; }

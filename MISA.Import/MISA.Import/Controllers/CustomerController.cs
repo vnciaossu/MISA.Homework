@@ -94,7 +94,7 @@ namespace MISA.Import.Controllers
                             worksheet.Cells[row, 1].Value == null ? null : worksheet.Cells[row, 1].Value.ToString(),
                             worksheet.Cells[row, 3].Value == null ? null : worksheet.Cells[row, 3].Value.ToString(),
                             worksheet.Cells[row, 4].Value == null ? null : worksheet.Cells[row, 4].Value.ToString(),
-                            null,
+                            GetCustomerGroupId(worksheet.Cells[row, 4].Value == null ? null : worksheet.Cells[row, 4].Value.ToString()),
                             worksheet.Cells[row, 5].Value == null ? null : worksheet.Cells[row, 5].Value.ToString(),
                             FormatDob(worksheet.Cells[row, 6].Value == null ? null : worksheet.Cells[row, 6].Value.ToString()),
                             worksheet.Cells[row, 7].Value == null ? null : worksheet.Cells[row, 7].Value.ToString(),
@@ -108,6 +108,33 @@ namespace MISA.Import.Controllers
                     }
                 }
                 return customers;
+            }
+        }
+
+        private Guid? GetCustomerGroupId(string customerGroupName)
+        {
+            try
+            {
+                using (dbConnection = new MySqlConnection(connectionString))
+                {
+                    var sqlCommand = "Proc_GetCustomerGroup";
+                    DynamicParameters dynamicParameters = new DynamicParameters();
+                    dynamicParameters.Add("@CustomerGroupName", customerGroupName);
+                    var res = dbConnection.QueryFirstOrDefault<Guid>(sqlCommand, param: dynamicParameters, commandType: CommandType.StoredProcedure);
+                    if (res.Equals(Guid.Empty))
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return res;
+                    }
+                   
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
