@@ -15,7 +15,7 @@ namespace MISA.Import.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        static List<Customer> customers = new List<Customer>();
+        private static List<Customer> customers = new List<Customer>();
         private IDbConnection dbConnection;
 
         private string connectionString = ""
@@ -26,6 +26,11 @@ namespace MISA.Import.Controllers
                 + "Database = MF810-Import-TMQuy;"
                 + "convert zero datetime=True";
 
+        /// <summary>
+        /// Import file excel
+        /// </summary>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
         [HttpPost("Import")]
         public IActionResult Import(IFormFile formFile)
         {
@@ -48,9 +53,13 @@ namespace MISA.Import.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Gửi dữ liệu lên database
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("Insert")]
         public IActionResult Post()
-        {           
+        {
             var res = InsertCustomer(customers);
             var result = new
             {
@@ -58,12 +67,18 @@ namespace MISA.Import.Controllers
                 Success = res,
                 Data = customers
             };
-            return Ok(result);           
+            return Ok(result);
         }
+
+        /// <summary>
+        /// Đọc file excel
+        /// </summary>
+        /// <param name="formFile"></param>
+        /// <returns></returns>
         private List<Customer> GetAllCustomer(IFormFile formFile)
         {
             ExcelPackage.LicenseContext = LicenseContext.Commercial;
-            
+
             using (var stream = new MemoryStream())
             {
                 formFile.CopyToAsync(stream);
@@ -96,6 +111,11 @@ namespace MISA.Import.Controllers
             }
         }
 
+        /// <summary>
+        /// Cover date
+        /// </summary>
+        /// <param name="dob"></param>
+        /// <returns></returns>
         private DateTime? FormatDob(string dob)
         {
             try
@@ -118,6 +138,11 @@ namespace MISA.Import.Controllers
             }
         }
 
+        /// <summary>
+        /// Thêm customer vào database
+        /// </summary>
+        /// <param name="customes"></param>
+        /// <returns></returns>
         private int InsertCustomer(List<Customer> customes)
         {
             string sqlCommand = "Proc_InsertCustomer";
@@ -171,6 +196,10 @@ namespace MISA.Import.Controllers
             }
         }
 
+        /// <summary>
+        /// Kiểm tra trùng mã
+        /// </summary>
+        /// <param name="customer"></param>
         private void CheckCustomerCodeExists(Customer customer)
         {
             var sqlCommand = "Proc_CheckCustomerCodeExists";
@@ -185,6 +214,10 @@ namespace MISA.Import.Controllers
             }
         }
 
+        /// <summary>
+        /// Kiểm tra trùng tên nhóm khách hàng
+        /// </summary>
+        /// <param name="customer"></param>
         private void CheckCustomerGroupNameExists(Customer customer)
         {
             var sqlCommand = "Proc_CheckCustomerGroupNameExists";
@@ -198,6 +231,10 @@ namespace MISA.Import.Controllers
             }
         }
 
+        /// <summary>
+        /// Kiểm tra trùng số điện thoại
+        /// </summary>
+        /// <param name="customer"></param>
         private void CheckPhoneNumberExists(Customer customer)
         {
             var sqlCommand = "Proc_CheckPhoneNumberExists";
