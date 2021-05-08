@@ -4736,19 +4736,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tmquy\\.nuget\\packages\\": {}
+    "C:\\Users\\tumin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
+      "projectUniqueName": "D:\\Web\\Misa\\Homework\\MISA.Homework\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
       "projectName": "MISA.Import",
-      "projectPath": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
-      "packagesPath": "C:\\Users\\tmquy\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\MISA.WEB2021_04A\\MISA.Homework\\MISA.Import\\MISA.Import\\obj\\",
+      "projectPath": "D:\\Web\\Misa\\Homework\\MISA.Homework\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
+      "packagesPath": "C:\\Users\\tumin\\.nuget\\packages\\",
+      "outputPath": "D:\\Web\\Misa\\Homework\\MISA.Homework\\MISA.Import\\MISA.Import\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tmquy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tumin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4809,7 +4809,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

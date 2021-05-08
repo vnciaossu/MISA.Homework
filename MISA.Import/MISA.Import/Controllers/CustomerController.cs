@@ -77,6 +77,7 @@ namespace MISA.Import.Controllers
         /// <returns></returns>
         private List<Customer> GetAllCustomer(IFormFile formFile)
         {
+            customers.Clear();
             ExcelPackage.LicenseContext = LicenseContext.Commercial;
 
             using (var stream = new MemoryStream())
@@ -110,7 +111,11 @@ namespace MISA.Import.Controllers
                 return customers;
             }
         }
-
+        /// <summary>
+        /// Lấy dữ liệu CustomerGroupId từ customerGroupName
+        /// </summary>
+        /// <param name="customerGroupName"></param>
+        /// <returns>CustomerGroupId</returns>
         private Guid? GetCustomerGroupId(string customerGroupName)
         {
             try
@@ -139,7 +144,7 @@ namespace MISA.Import.Controllers
         }
 
         /// <summary>
-        /// Cover date
+        /// Format date
         /// </summary>
         /// <param name="dob"></param>
         /// <returns></returns>
@@ -187,7 +192,10 @@ namespace MISA.Import.Controllers
             }
             return res;
         }
-
+        /// <summary>
+        /// Kiểm tra dữ liệu
+        /// </summary>
+        /// <param name="customers"></param>
         private void Validate(List<Customer> customers)
         {
             foreach (Customer customer in customers)
@@ -203,7 +211,7 @@ namespace MISA.Import.Controllers
                 {
                     if (customers[i].CustomerCode == customers[j].CustomerCode)
                     {
-                        customers[i].Status += "Mã khách hàng tồn tại trên tệp\n";
+                        customers[i].Status += Properties.Resources.MsgCustomerCodeExits + "\n";
                         break;
                     }
                 }
