@@ -6,7 +6,6 @@ namespace MISA.Import.Entity
     {
         public Customer(string fullName, string customerCode, string memberCardCode, string customerGroupName, Guid? customerGroupId, string phoneNumber, DateTime? dateOfBirth, string companyName, string taxCode, string email, string address, string note, string status)
         {
-           
             FullName = fullName;
             CustomerCode = customerCode;
             MemberCardCode = memberCardCode;

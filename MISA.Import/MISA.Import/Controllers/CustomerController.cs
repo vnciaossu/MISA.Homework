@@ -11,7 +11,7 @@ using System.IO;
 
 namespace MISA.Import.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
@@ -60,14 +60,19 @@ namespace MISA.Import.Controllers
         [HttpPost("Insert")]
         public IActionResult Post()
         {
+            if(customers.Count == 0)
+            {
+                return BadRequest();
+            }
             var res = InsertCustomer(customers);
             var result = new
             {
                 TotalRecord = customers.Count,
-                Success = res,
-                Data = customers
+                Success = res,             
             };
+            customers.Clear();
             return Ok(result);
+            
         }
 
         /// <summary>
